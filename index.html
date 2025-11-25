@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini AI Chatbot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Markdown parsing library -->
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+
+    <!-- API Key Modal -->
+    <div id="api-key-modal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <h2>Welcome to Gemini Chat</h2>
+            <p>Please enter your Google Gemini API Key to continue. Your key is stored locally in your browser's session memory and is never sent to our servers.</p>
+            <div class="input-group">
+                <input type="password" id="api-key-input" placeholder="Enter your API Key" autocomplete="off">
+                <button id="save-api-key-btn" class="primary-btn">Start Chatting</button>
+            </div>
+            <p class="small-text">Don't have a key? <a href="https://aistudio.google.com/app/apikey" target="_blank">Get one here</a>.</p>
+            <p id="api-key-error" class="error-message hidden">Please enter a valid API key.</p>
+        </div>
+    </div>
+
+    <!-- Main Chat Interface -->
+    <main class="chat-container">
+        <header class="chat-header glass-panel">
+            <div class="logo">
+                <span class="icon">✨</span>
+                <h1>Gemini Assistant</h1>
+            </div>
+            <button id="reset-key-btn" class="icon-btn" title="Reset API Key">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/><path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16"/><path d="M16 16h5v5"/></svg>
+            </button>
+        </header>
+
+        <div id="chat-history" class="chat-history">
+            <!-- Messages will be appended here -->
+            <div class="message system-message">
+                <div class="message-content glass-panel">
+                    <p>Hello! I'm your AI assistant powered by Google Gemini. How can I help you today?</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-input-area glass-panel">
+            <form id="chat-form">
+                <div class="input-wrapper">
+                    <textarea id="user-input" placeholder="Type your message..." rows="1"></textarea>
+                    <button type="submit" id="send-btn" disabled>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- "How this was made" Section -->
+    <section id="info-section" class="info-section hidden-section">
+        <div class="info-content glass-panel">
+            <h2>How this was made</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Client-Side Security</h3>
+                    <p>This application follows a "Bring Your Own Key" architecture. Your API key is stored strictly in <code>sessionStorage</code>, ensuring it disappears when you close the tab.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Real-Time Streaming</h3>
+                    <p>Utilizing the Gemini API's <code>streamGenerateContent</code> endpoint, responses are decoded and rendered chunk-by-chunk for an immediate, conversational feel.</p>
+                </div>
+                <div class="info-card">
+                    <h3>Modern UI/UX</h3>
+                    <p>Built with vanilla CSS using Glassmorphism principles, responsive flexbox layouts, and hardware-accelerated animations for a premium experience.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/config.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
