@@ -1,6 +1,6 @@
 window.API_CONFIG = {
     BASE_URL: 'https://generativelanguage.googleapis.com/v1beta',
-    MODEL: 'gemini-2.5-flash',
+    MODEL: 'gemma-3-27b',
     METHOD: 'streamGenerateContent'
 };
 
